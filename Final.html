@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shan-e-Rewa Dhaba & Restro | Taste That Feels Like Home 🔥</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playball&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= CSS VARIABLES & DESIGN SYSTEM ================= */
+        :root {
+            --bg-color: #050505;
+            --card-bg: rgba(20, 20, 20, 0.85); /* Deep charcoal, slightly transparent */
+            --text-main: #f5f5f5;
+            --text-muted: #aaaaaa;
+            --accent-gold: #d4af37;
+            --accent-gold-glow: rgba(212, 175, 55, 0.4);
+            --veg-color: #28a745;
+            --non-veg-color: #dc3545;
+            --wa-color: #25D366;
+            --phone-color: #007bff;
+            /* Elegant cubic-bezier for premium feel */
+            --transition-elegant: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+            /* Cinematic Fixed Background */
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.92)), url('https://images.unsplash.com/photo-1596797038530-2c107229654b?q=80&w=2000&auto=format&fit=crop');
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        /* ================= TYPOGRAPHY ================= */
+        h1, h2, h3, h4 { font-weight: 600; }
+
+        .brand-font {
+            font-family: 'Playball', cursive;
+            color: var(--accent-gold);
+            font-size: 4.5rem;
+            text-shadow: 0 4px 20px var(--accent-gold-glow);
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--accent-gold);
+            font-family: 'Playball', cursive;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        /* ================= BUTTONS & UTILITIES ================= */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #d4af37, #aa8529);
+            color: #000;
+            padding: 14px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-elegant);
+            box-shadow: 0 4px 15px var(--accent-gold-glow);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent-gold);
+            border: 2px solid var(--accent-gold);
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: var(--accent-gold);
+            color: #000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 0;
+        }
+
+        /* ================= ANIMATIONS ================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: var(--transition-elegant);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes pulse-wa {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* ================= HERO SECTION ================= */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--text-main);
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        /* ================= THALI COMBOS (BHARTIPET BACHAT) ================= */
+        .thali-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .thali-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: var(--transition-elegant);
+            backdrop-filter: blur(10px);
+        }
+
+        .thali-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8), 0 0 20px var(--accent-gold-glow);
+        }
+
+        .thali-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        .thali-content {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .thali-content h3 {
+            font-size: 1.6rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        .price-box { margin: 15px 0 25px; }
+        
+        .old-price {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-right: 10px;
+        }
+        
+        .new-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        /* ================= FULL MENU (ANIMATED BOXES) ================= */
+        .menu-note {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+
+        .menu-category-box {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 16px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: var(--transition-elegant);
+            backdrop-filter: blur(5px);
+        }
+
+        /* --- THE COLOR SHIFTING ANIMATION RULES --- */
+        .menu-category-box.theme-veg.active {
+            border-color: var(--veg-color);
+            box-shadow: 0 0 25px rgba(40, 167, 69, 0.2);
+        }
+        .menu-category-box.theme-non-veg.active {
+            border-color: var(--non-veg-color);
+            box-shadow: 0 0 25px rgba(220, 53, 69, 0.2);
+        }
+        .menu-category-box.theme-mixed.active {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 25px var(--accent-gold-glow);
+        }
+
+        .category-header {
+            width: 100%;
+            padding: 22px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .category-icon {
+            font-size: 1.5rem;
+            transition: var(--transition-elegant);
+        }
+        .menu-category-box.active .category-icon { transform: rotate(45deg); }
+
+        .category-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            background: rgba(0,0,0,0.5);
+        }
+
+        .menu-grid {
+            padding: 20px 25px 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            transition: var(--transition-elegant);
+        }
+
+        .menu-item:hover { background: rgba(212, 175, 55, 0.1); }
+
+        .item-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .item-name { font-size: 1rem; font-weight: 500; }
+        .item-price {
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        .price-sub { font-size: 0.75rem; color: var(--accent-gold); }
+
+        /* Indian Standard Food Indicators */
+        .food-indicator {
+            width: 16px;
+            height: 16px;
+            border: 2px solid;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            flex-shrink: 0;
+            background: #fff;
+        }
+        .food-indicator::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        .veg { border-color: var(--veg-color); }
+        .veg::after { background-color: var(--veg-color); }
+        .non-veg { border-color: var(--non-veg-color); }
+        .non-veg::after { background-color: var(--non-veg-color); }
+
+        /* ================= MAPS & LOCATION ================= */
+        .map-wrapper {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            text-align: center;
+        }
+
+        .map-iframe-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border: 2px solid var(--accent-gold);
+        }
+        .map-iframe-container iframe { width: 100%; height: 100%; border: none; }
+
+        /* ================= INSTAGRAM BANNER ================= */
+        .insta-banner {
+            background: linear-gradient(135deg, rgba(20,20,20,0.9), rgba(5,5,5,0.9));
+            border: 1px solid var(--accent-gold);
+            border-radius: 20px;
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: inset 0 0 30px rgba(212, 175, 55, 0.05);
+        }
+
+        .insta-btn {
+            background: transparent;
+            color: var(--accent-gold);
+            border: 2px solid var(--accent-gold);
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 40px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 20px;
+            transition: var(--transition-elegant);
+        }
+        .insta-btn:hover {
+            background: var(--accent-gold);
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background: #020202;
+            padding: 60px 20px 120px;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        footer h4 {
+            font-family: 'Playball', cursive;
+            color: var(--accent-gold);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* ================= FABs ================= */
+        .fab-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 9999;
+        }
+
+        .fab {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+            transition: var(--transition-elegant);
+            text-decoration: none;
+            color: white;
+        }
+        .fab:hover { transform: scale(1.1) translateY(-5px); }
+        .fab-wa { background-color: var(--wa-color); animation: pulse-wa 2s infinite; }
+        .fab-phone { background-color: var(--phone-color); }
+        .fab svg { width: 32px; height: 32px; fill: currentColor; }
+
+        /* Responsive Tweaks */
+        @media (max-width: 768px) {
+            .brand-font { font-size: 3.5rem; }
+            .section-title { font-size: 2rem; }
+            .container { padding: 60px 0; }
+            .category-header { font-size: 1.15rem; padding: 18px 20px; }
+            .thali-img { height: 200px; }
+            .fab { width: 55px; height: 55px; }
+            .fab svg { width: 28px; height: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="hero-content reveal">
+            <h1 class="brand-font">Shan-e-Rewa</h1>
+            <h2 class="brand-font" style="font-size: 2.5rem; margin-top:-15px;">Dhaba & Restro</h2>
+            <p class="tagline">Taste That Feels Like Home 🔥</p>
+            <a href="#menu-section" class="btn">
+                Explore Our Creations
+            </a>
+        </div>
+    </header>
+
+    <!-- MUST TRY THALIS (BHARTIPET BACHAT) -->
+    <section class="container" id="deals">
+        <h2 class="section-title reveal">Must Try Thalis</h2>
+        <div class="thali-grid">
+            
+            <!-- Veg Thali -->
+            <div class="thali-card reveal">
+                <!-- 
+                AI PROMPT FOR MIDJOURNEY/DALL-E: 
+                /imagine prompt: A top-down photorealistic shot of a traditional North Indian Veg Thali on a copper plate. Includes yellow Dal Tadka, vibrant Aloo Gobi, steaming Basmati rice, two buttery naan breads, fresh cucumber salad, and a dollop of raita. Cinematic lighting, rustic dark wood table background, 8k resolution, food photography --ar 4:3 
+                -->
+                <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=800&auto=format&fit=crop" alt="Veg Thali" class="thali-img">
+                <div class="thali-content">
+                    <div class="food-indicator veg" style="margin: 0 auto 10px;"></div>
+                    <h3>Special Veg Thali</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Dal Tadka, Mix Veg, Paneer Sabzi, Rice, 4 Roti, Salad & Sweet.</p>
+                    <div class="price-box">
+                        <span class="old-price">₹199</span>
+                        <span class="new-price">₹149</span>
+                    </div>
+                    <a href="https://wa.me/917806059642?text=Hello,%20I%20want%20to%20order%20the%20Special%20Veg%20Thali%20(149/-)" target="_blank" class="btn btn-outline" style="width: 100%;">Book via WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Non-Veg Thali -->
+            <div class="thali-card reveal" style="transition-delay: 0.1s;">
+                <!-- 
+                AI PROMPT FOR MIDJOURNEY/DALL-E: 
+                /imagine prompt: A top-down mouthwatering photograph of an authentic Indian Chicken Thali in a brass tray. Features rich red Chicken Curry, spicy Chicken Tikka pieces, saffron Biryani rice, soft rumali roti, sliced onions with lemon, and mint chutney. Warm ambient lighting, highly detailed, professional food styling, 8k --ar 4:3 
+                -->
+                <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=800&auto=format&fit=crop" alt="Non-Veg Thali" class="thali-img">
+                <div class="thali-content">
+                    <div class="food-indicator non-veg" style="margin: 0 auto 10px;"></div>
+                    <h3>Chicken Feast Thali</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Chicken Curry, Chicken Dry (2pc), Biryani Rice, 4 Butter Roti, Salad.</p>
+                    <div class="price-box">
+                        <span class="old-price">₹349</span>
+                        <span class="new-price">₹249</span>
+                    </div>
+                    <a href="https://wa.me/917806059642?text=Hello,%20I%20want%20to%20order%20the%20Chicken%20Feast%20Thali%20(249/-)" target="_blank" class="btn btn-outline" style="width: 100%;">Book via WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Maharaja Thali -->
+            <div class="thali-card reveal" style="transition-delay: 0.2s;">
+                <!-- 
+                AI PROMPT FOR MIDJOURNEY/DALL-E: 
+                /imagine prompt: a detailed, top-down photograph of a traditional silver Indian Maharaja Thali set on a rustic wooden table. It includes: a copper katori of creamy Paneer Butter Masala, a katori of smoky Dal Makhani, a portion of fragrant saffron Jeera Rice, two soft butter rotis on a small napkin, a katori of sweet Gulab Jamun with silver leaf, and fresh green salad. Lighting is warm and inviting, photorealistic, 8k resolution --ar 4:3. 
+                -->
+                <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?q=80&w=800&auto=format&fit=crop" alt="Maharaja Thali" class="thali-img">
+                <div class="thali-content">
+                    <div class="food-indicator mixed" style="margin: 0 auto 10px; border-color: var(--accent-gold);"><div style="width:8px; height:8px; background:var(--accent-gold); border-radius:50%;"></div></div>
+                    <h3>The Maharaja Thali</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Paneer Butter Masala, Dal Makhani, Jeera Rice, Butter Naan, Gulab Jamun & Salad.</p>
+                    <div class="price-box">
+                        <span class="old-price">₹399</span>
+                        <span class="new-price">₹299</span>
+                    </div>
+                    <a href="https://wa.me/917806059642?text=Hello,%20I%20want%20to%20order%20The%20Maharaja%20Thali%20(299/-)" target="_blank" class="btn btn-outline" style="width: 100%;">Book via WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FULL MENU (ANIMATED STAGGERED BOXES) -->
+    <section class="container" id="menu-section">
+        <h2 class="section-title reveal">Culinary Masterpieces</h2>
+        <p class="menu-note reveal">Tap a category to unveil the menu. Watch the colors shift. <br><span style="color:var(--accent-gold);">(Q) Qtr | (H) Half | (F) Full</span></p>
+        
+        <div id="menu-container" class="reveal">
+            <!-- JavaScript will inject the animated boxes here -->
+        </div>
+    </section>
+
+    <!-- MAPS & LOCATION -->
+    <section class="container" id="location">
+        <h2 class="section-title reveal">Find Our Dhaba</h2>
+        <div class="map-wrapper reveal">
+            <div class="map-iframe-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3630.9388102325327!2d81.3090282!3d24.5323284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDMxJzU2LjQiTiA4McKwMTgnMzIuNSJF!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <p style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 25px;">
+                <strong>NH30 Near HP Pump, Kostha Prayagraj Road</strong><br>
+                <span style="color: var(--text-muted); font-size: 1rem;">Rewa, Madhya Pradesh</span>
+            </p>
+            <a href="http://maps.google.com?daddr=Shan-e-Rewa+Dhaba+Rewa" target="_blank" class="btn" style="width: 100%; max-width: 400px; padding: 18px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+                Get Directions to Dine In
+            </a>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM BANNER -->
+    <section class="container reveal">
+        <div class="insta-banner">
+            <h3 style="font-size: 2rem; color: var(--accent-gold); font-family: 'Playball', cursive; margin-bottom: 10px;">Join the Royal Family</h3>
+            <p style="color: var(--text-muted); margin-bottom: 10px;">Follow our journey on Instagram for exclusive secret menus and behind-the-scenes fire.</p>
+            <a href="https://www.instagram.com/shan_e_rewa_dhaba_restro?igsh=MXRhbnBnbTJod3Q2" target="_blank" class="insta-btn">
+                @shan_e_rewa_dhaba_restro
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <h4>Shan-e-Rewa</h4>
+        <p>Taste That Feels Like Home 🔥</p>
+        <p style="margin-top: 15px; color: var(--text-muted);">Rewa, Madhya Pradesh | +91 7806059642</p>
+        <p style="margin-top: 20px; font-size: 0.85rem; color: #555;">&copy; 2026 Shan-e-Rewa Dhaba & Restro. All Rights Reserved.</p>
+    </footer>
+
+    <!-- FLOATING ACTION BUTTONS -->
+    <div class="fab-container">
+        <!-- Phone FAB (Bookings) -->
+        <a href="tel:+917806059642" class="fab fab-phone" aria-label="Call for Bookings">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1.011 1.011 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path></svg>
+        </a>
+        <!-- WhatsApp FAB (Orders) -->
+        <a href="https://wa.me/917806059642?text=Hello%20Shan-e-Rewa!%20I%20am%20looking%20at%20your%20menu%20and%20want%20to%20place%20an%20order." target="_blank" class="fab fab-wa" aria-label="WhatsApp Orders">
+            <svg viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.126.554 4.154 1.606 5.968L.18 23.518l5.656-1.486A11.944 11.944 0 0 0 12.03 24c6.646 0 12.031-5.384 12.031-12.03S18.677 0 12.031 0zm0 21.986c-1.801 0-3.564-.486-5.11-1.405l-.367-.217-3.8.997 1.015-3.705-.238-.378A9.957 9.957 0 0 1 2.014 12.03c0-5.526 4.496-10.021 10.017-10.021 5.52 0 10.018 4.495 10.018 10.021 0 5.526-4.497 10.021-10.018 10.021zm5.503-7.518c-.302-.152-1.785-.882-2.062-.983-.277-.101-.48-.152-.682.152-.202.302-.782.983-.958 1.185-.177.202-.354.227-.656.076-1.455-.726-2.613-1.428-3.605-2.914-.257-.384-.034-.582.115-.733.134-.136.302-.352.454-.528.152-.177.202-.302.302-.505.101-.202.05-.38-.025-.531-.076-.152-.682-1.644-.934-2.25-.246-.593-.496-.513-.682-.523-.177-.01-.38-.01-.582-.01-.202 0-.53.076-.808.38-.277.302-1.06 1.036-1.06 2.525s1.085 2.93 1.237 3.132c.152.202 2.135 3.259 5.174 4.568 1.943.836 2.76.757 3.518.63 1-.168 2.083-.852 2.376-1.675.293-.824.293-1.53.205-1.676-.088-.146-.316-.247-.618-.4z"></path></svg>
+        </a>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Data structure with "theme" property for the color-shifting animation
+        const menuData = [
+            {
+                category: "Veg Snack's", theme: "theme-veg",
+                items: [
+                    { name: "Paneer Chilli", price: "180", veg: true },
+                    { name: "Hara Bhara Kabab", price: "140", veg: true },
+                    { name: "Crispy Corn", price: "110", veg: true },
+                    { name: "Paneer 65", price: "190", veg: true }
+                ]
+            },
+            {
+                category: "Chicken Snack's", theme: "theme-non-veg",
+                items: [
+                    { name: "Chicken Tikka (7pc)", price: "300", veg: false },
+                    { name: "Chicken Tandoori", price: "180(H) - 360(F)", veg: false },
+                    { name: "Chilly Chicken Boneless", price: "190(H) - 380(F)", veg: false },
+                    { name: "Chicken Afgani", price: "180(H) - 360(F)", veg: false }
+                ]
+            },
+            {
+                category: "Veg Main Course", theme: "theme-veg",
+                items: [
+                    { name: "Dal Makhani Special", price: "180", veg: true },
+                    { name: "Kadhai Paneer", price: "140(H) - 240(F)", veg: true },
+                    { name: "Paneer Butter Masala", price: "150(H) - 250(F)", veg: true },
+                    { name: "Malai Kofta", price: "190(F)", veg: true },
+                    { name: "Dal Tadka", price: "70(H) - 120(F)", veg: true }
+                ]
+            },
+            {
+                category: "Non-Veg Main Course", theme: "theme-non-veg",
+                items: [
+                    { name: "Butter Chicken", price: "150(Q) - 230(H) - 450(F)", veg: false },
+                    { name: "Handi Chicken", price: "150(Q) - 220(H) - 430(F)", veg: false },
+                    { name: "Mutton Rogan Josh", price: "290(H) - 560(F)", veg: false },
+                    { name: "Dhaba Chicken (Spcl)", price: "150(Q) - 220(H) - 440(F)", veg: false }
+                ]
+            },
+            {
+                category: "Breads & Rice", theme: "theme-mixed",
+                items: [
+                    { name: "Butter Naan", price: "35", veg: true },
+                    { name: "Tandoori Butter Roti", price: "12", veg: true },
+                    { name: "Garlic Naan", price: "45", veg: true },
+                    { name: "Chicken Biryani", price: "260", veg: false },
+                    { name: "Jeera Rice", price: "70(H) - 120(F)", veg: true }
+                ]
+            }
+        ];
+
+        // Inject Menu HTML
+        const menuContainer = document.getElementById('menu-container');
+
+        menuData.forEach((cat) => {
+            const box = document.createElement('div');
+            // Add base class and the specific theme class
+            box.className = `menu-category-box ${cat.theme}`;
+
+            const header = document.createElement('button');
+            header.className = 'category-header';
+            header.innerHTML = `${cat.category} <span class="category-icon">+</span>`;
+
+            const content = document.createElement('div');
+            content.className = 'category-content';
+
+            const grid = document.createElement('div');
+            grid.className = 'menu-grid';
+
+            cat.items.forEach(item => {
+                const isVeg = item.veg ? 'veg' : 'non-veg';
+                const menuItem = document.createElement('div');
+                menuItem.className = 'menu-item';
+                menuItem.innerHTML = `
+                    <div class="item-info">
+                        <div class="food-indicator ${isVeg}"></div>
+                        <span class="item-name">${item.name}</span>
+                    </div>
+                    <div class="item-price">₹${item.price.replace(/\(Q\)|\(H\)|\(F\)/g, match => `<span class="price-sub">${match}</span>`)}</div>
+                `;
+                grid.appendChild(menuItem);
+            });
+
+            content.appendChild(grid);
+            box.appendChild(header);
+            box.appendChild(content);
+            menuContainer.appendChild(box);
+
+            // Click interaction for staggered color-shift accordion
+            header.addEventListener('click', () => {
+                const isActive = box.classList.contains('active');
+                
+                // Close all other boxes
+                document.querySelectorAll('.menu-category-box').forEach(b => {
+                    b.classList.remove('active');
+                    b.querySelector('.category-content').style.maxHeight = null;
+                });
+
+                // Open clicked box and trigger color shift
+                if (!isActive) {
+                    box.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
+
+        // Elegant Scroll Reveal Animation Setup
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+
+            const observerOptions = {
+                root: null,
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            reveals.forEach(reveal => revealOnScroll.observe(reveal));
+            
+            // Initial check for items already in viewport
+            setTimeout(() => {
+                reveals.forEach(reveal => {
+                    if (reveal.getBoundingClientRect().top < window.innerHeight) {
+                        reveal.classList.add('active');
+                    }
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>
